@@ -15,6 +15,9 @@ class LoginPage(BasePage):
     PASSWORD_INPUT = "#password"
     LOGIN_BUTTON = "#login-button"
     ERROR_MESSAGE = "[data-test='error']"
+    # added few new methiodss
+
+    #dsfsdfs
 
     def open_login_page(self) -> None:
         self.open("/")
