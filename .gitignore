@@ -1,0 +1,54 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Pytest cache
+.pytest_cache/
+
+# Playwright browser binaries
+playwright/.local-browsers/
+
+# HTML Reports
+reports/
+html_reports/
+
+# Screenshots
+screenshots/
+reports/screenshots/
+
+# Logs
+logs/
+*.log
+
+# Coverage Reports
+.coverage
+htmlcov/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Environment variables
+.env
+
+# Python build files
+build/
+dist/
+*.egg-info/
+
+# IDE files
+.idea/
+
+# Temporary files
+*.tmp
