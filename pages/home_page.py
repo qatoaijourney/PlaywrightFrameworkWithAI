@@ -11,5 +11,3 @@ class HomePage(BasePage):
     def open_home(self) -> None:
         self.open("/")
 
-    def testing(self) -> None:
-        self.page.click("text=Testing")
