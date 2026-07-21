@@ -26,7 +26,7 @@ def playwright_instance():
 
 @pytest.fixture(scope="function")
 def browser(playwright_instance):
-    headless = os.getenv("HEADLESS", "false").lower() == "true"
+    headless = os.getenv("HEADLESS", "false").lower() == "false"
     browser = playwright_instance.chromium.launch(headless=headless)
     yield browser
     browser.close()
