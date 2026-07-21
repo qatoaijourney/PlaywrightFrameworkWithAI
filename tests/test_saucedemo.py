@@ -35,8 +35,9 @@ class TestSaucedemo:
         inventory_page = self._login(page)
         inventory_page.add_backpack_to_cart()
         inventory_page.open_cart()
-
        # checkout_page = CheckoutPage(page)
        # checkout_page.complete_checkout("John", "Doe", "560001")
-
         #assert "Thank you for your order!" in checkout_page.get_complete_header()
+
+    def test_newtest(self, page):
+        print("This is a new test")
