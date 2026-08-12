@@ -40,5 +40,5 @@ class TestSaucedemo:
         #assert "Thank you for your order!" in checkout_page.get_complete_header()
 
     def test_newtest(self, page):
-        print("This is the test method for demo")
+        print("This is the test method for demonstration purposes.")
 

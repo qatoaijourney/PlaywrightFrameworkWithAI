@@ -12,7 +12,7 @@ class LoginPage(BasePage):
 
     # Locators
     USERNAME_INPUT = "#user-name"
-    PASSWORD_INPUT = "#password"
+    PASSWORD_INPUT = "#passwor1234"
     LOGIN_BUTTON = "#login-button"
     ERROR_MESSAGE = "[data-test='error']"
     # added few new methiodss
@@ -35,7 +35,7 @@ class LoginPage(BasePage):
         self.enter_username(username)
         self.enter_password(password)
         self.click_login()
-        #expect(self.page).to_have_url(re.compile(r".*/inventory\.html"), timeout=10000)
+        expect(self.page).to_have_url(re.compile(r".*/inventory\.html"), timeout=10000)
 
     def get_error_message(self) -> str:
         return self.get_text(self.ERROR_MESSAGE)
