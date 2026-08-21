@@ -1,3 +1,32 @@
+Q-001 | Related requirement: FR-2 (Successful login)
+Question: Are `alice`/`pwd` guaranteed test credentials, or should a test credentials store be provided?
+Why required: Tests depend on known valid credentials.
+Testing impact: Without stable credentials, successful login scenarios cannot be validated.
+Priority: High
+
+Q-002 | Related requirement: FR-2 (post-login UI)
+Question: After successful login, should username/password inputs be cleared or hidden (which behavior is authoritative)?
+Why required: Test assertions differ between "inputs cleared" vs "not visible".
+Testing impact: Clarifies expected assertions for success scenario.
+Priority: Medium
+
+Q-003 | Related requirement: Performance/Timing
+Question: What is the maximum acceptable page load time or explicit wait threshold for tests to use?
+Why required: To set reliable timeouts and avoid flakiness.
+Testing impact: Affects DEFAULT_TIMEOUT and wait strategies.
+Priority: Medium
+
+Q-004 | Related requirement: Error messaging
+Question: Is the error message text for failed login exactly "Invalid username/password" or are variations allowed?
+Why required: Tests currently perform substring or exact matching; clarity avoids brittle asserts.
+Testing impact: Determines whether to use exact or substring matches.
+Priority: Medium
+
+Q-005 | Related requirement: Environment
+Question: Is Chromium required for CI runs, or is system Chrome acceptable (helps work around sandbox issues)?
+Why required: Test environment earlier showed Playwright bundle launch issues on macOS sandbox.
+Testing impact: Affects fixture configuration and CI environment setup.
+Priority: High
 # Clarification Questions
 
 - Question ID: Q6
