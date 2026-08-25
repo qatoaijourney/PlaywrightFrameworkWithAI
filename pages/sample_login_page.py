@@ -14,10 +14,11 @@ class SampleLoginPage(BasePage):
 
     def _username_locator(self) -> Locator:
         candidates = [
+            lambda: self.page.get_by_placeholder("User Name"),
+            lambda: self.page.get_by_label("User Name"),
+            lambda: self.page.locator("input[name='UserName']"),
             lambda: self.page.get_by_placeholder("Username"),
-            lambda: self.page.get_by_placeholder("username"),
             lambda: self.page.get_by_label("Username"),
-            lambda: self.page.get_by_label("username"),
             lambda: self.page.locator("input[name='username']"),
             lambda: self.page.locator("input[type='text']").first,
         ]
@@ -33,8 +34,8 @@ class SampleLoginPage(BasePage):
     def _password_locator(self) -> Locator:
         candidates = [
             lambda: self.page.get_by_placeholder("Password"),
-            lambda: self.page.get_by_placeholder("password"),
             lambda: self.page.get_by_label("Password"),
+            lambda: self.page.locator("input[name='Password']"),
             lambda: self.page.locator("input[type='password']"),
         ]
         for c in candidates:
@@ -118,7 +119,7 @@ class SampleLoginPage(BasePage):
             return False
 
     def click_logout(self) -> None:
-        btn = self.page.get_by_role("button", name="Log Out")
+        btn = self.page.get_by_role("button", name=re.compile(r"Log Out", re.I))
         if btn.count():
             btn.click()
         else:

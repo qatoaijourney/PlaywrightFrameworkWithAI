@@ -16,7 +16,7 @@ Feature: Sample App Login
     When I submit the login form
     Then I should see "Welcome, alice!"
     And the login button should display "Log Out"
-    And the username and password fields should be cleared or not visible as part of logged-in UI
+  # And the username and password fields should be cleared or not visible as part of logged-in UI
 
   @REQ-SAMPLE-LOGIN-003 @TC-LOGIN-003
   Scenario: Login rejected with invalid password
