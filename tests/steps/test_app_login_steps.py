@@ -1,10 +1,10 @@
 import re
-from pytest_bdd import given, when, then, parsers
+from pytest_bdd import given, scenarios, when, then, parsers
 from playwright.sync_api import expect
 
 from pages.sample_login_page import SampleLoginPage
 
-
+scenarios("../features/sample_app_login.feature")
 @given(parsers.parse('I open the Sample Application login page at "{url}"'))
 def open_sample_login(page, url):
     p = SampleLoginPage(page)
