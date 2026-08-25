@@ -8,53 +8,22 @@ from config.settings import UI_TESTING_PLAYGROUND_URL, DEFAULT_TIMEOUT
 
 
 class SampleLoginPage(BasePage):
+    USERNAME_INPUT = "input[name='UserName'], input[name='username'], input[placeholder='User Name'], input[placeholder='Username']"
+    PASSWORD_INPUT = "input[name='Password'], input[placeholder='Password'], input[type='password']"
+    LOGIN_BUTTON = "button"
+
     def __init__(self, page: Page):
         super().__init__(page)
         self.page = page
 
     def _username_locator(self) -> Locator:
-        candidates = [
-            lambda: self.page.get_by_placeholder("User Name"),
-            lambda: self.page.get_by_label("User Name"),
-            lambda: self.page.locator("input[name='UserName']"),
-            lambda: self.page.get_by_placeholder("Username"),
-            lambda: self.page.get_by_label("Username"),
-            lambda: self.page.locator("input[name='username']"),
-            lambda: self.page.locator("input[type='text']").first,
-        ]
-        for c in candidates:
-            try:
-                loc = c()
-                if loc is not None and loc.count() and loc.is_visible():
-                    return loc
-            except Exception:
-                continue
-        return self.page.locator("input").first
+        return self.page.locator(self.USERNAME_INPUT).first
 
     def _password_locator(self) -> Locator:
-        candidates = [
-            lambda: self.page.get_by_placeholder("Password"),
-            lambda: self.page.get_by_label("Password"),
-            lambda: self.page.locator("input[name='Password']"),
-            lambda: self.page.locator("input[type='password']"),
-        ]
-        for c in candidates:
-            try:
-                loc = c()
-                if loc is not None and loc.count() and loc.is_visible():
-                    return loc
-            except Exception:
-                continue
-        return self.page.locator("input[type='password']")
+        return self.page.locator(self.PASSWORD_INPUT).first
 
     def _login_button_locator(self) -> Locator:
-        try:
-            btn = self.page.get_by_role("button", name=re.compile(r"Log In|Log Out", re.I))
-            if btn.count():
-                return btn
-        except Exception:
-            pass
-        return self.page.locator("button:has-text('Log In')").first
+        return self.page.get_by_role("button", name=re.compile(r"Log In|Log Out", re.I)).first
 
     def open_login_page(self) -> None:
         target = f"{UI_TESTING_PLAYGROUND_URL.rstrip('/')}/sampleapp"
